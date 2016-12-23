@@ -3,6 +3,7 @@ package goryachev.common.util;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
+import java.util.Locale;
 
 
 /**
@@ -30,12 +31,12 @@ public class UrlStreamFactory
 			});
 		}
 		
-		handlers.put(protocol, h);
+		handlers.put(protocol.toLowerCase(Locale.US), h);
 	}
 	
 	
 	protected static URLStreamHandler getHandler(String protocol)
 	{
-		return handlers.get(protocol);
+		return handlers.get(protocol.toLowerCase(Locale.US));
 	}
 }
