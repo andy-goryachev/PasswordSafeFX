@@ -44,21 +44,39 @@ public class MainWindow
 		CMenu m;
 		// file
 		m = mb.addMenu("File");
+		m.add("New Database");
+		m.add("Change Database Passphrase");
+		m.separator();
+		m.add("Open");
+		m.add("Save");
+		m.add("Save As...");
+		m.separator();
+		m.add("Preferences");
+		m.separator();
 		m.add(new CMenuItem("Exit", FX.exitAction()));
 		// edit
 		m = mb.addMenu("Edit");
+		m.add("Undo");
+		m.add("Redo");
+		m.separator();
+		m.add("Copy Username to Clipboard");
+		m.add("Copy Password to Clipboard");
+		m.add("Clear Clipboard");
+		m.add("Delete Entry"); // TODO wrong place
 		// view
-		m = mb.addMenu("View");
-		m.add(new CCheckMenuItem("An Option", Options.showConversationThreads));
-		// go
-		m = mb.addMenu("Go");
-		// message
-		m = mb.addMenu("Message");
-		m.add(new CMenuItem("Compose", composeAction));
-		// tools
-		m = mb.addMenu("Tools");
+//		m = mb.addMenu("View");
+//		m.add(new CCheckMenuItem("An Option", Options.showConversationThreads));
 		// help
 		m = mb.addMenu("Help");
+		m.add("Contact Customer Support");
+		m.add("Check for Updates");
+		m.separator();
+		m.add("Mandatory XKCD Reference");
+		m.separator();
+		m.add("License");
+		m.add("Open Source Licenses");
+		m.separator();
+		m.add("About");
 		return mb;
 	}
 	

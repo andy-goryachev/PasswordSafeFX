@@ -15,7 +15,9 @@ import javafx.application.Platform;
 
 
 /**
- * Css Loader.
+ * JavaFX CSS Loader uses a URL stream factory to register a special protocol
+ * in order to be able to change fx style sheets dynamically. 
+ * 
  * -Dcss.continuous.refresh=true
  * -Dcss.dump=true
  */
@@ -26,7 +28,7 @@ public class CssLoader
 	/** -Dcss.dump=true results in CSS being dumped to stderr */
 	public static final String DUMP_CSS_PROPERTY = "css.dump";
 	
-	public static final String PREFIX = "embeddedCSS";
+	public static final String PREFIX = "javafxcss";
 	private static CssLoader instance;
 	private String url;
 	private FxStyleSheet generator;
