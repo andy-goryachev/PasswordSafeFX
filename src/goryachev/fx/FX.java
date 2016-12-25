@@ -745,4 +745,20 @@ public final class FX
 			ss.remove(name);
 		}
 	}
+	
+	
+	public static void setDisable(boolean on, Object ... nodes)
+	{
+		for(Object x: nodes)
+		{
+			if(x instanceof Node)
+			{
+				((Node)x).setDisable(on);
+			}
+			else if(x instanceof CAction)
+			{
+				((CAction)x).setDisabled(on);
+			}
+		}
+	}
 }

@@ -42,7 +42,7 @@ public class MainController
 		{
 			protected void process() throws Throwable
 			{
-				sleep(1000);
+				sleep(10000);
 			}
 			
 			protected void onProcessEnd() 
