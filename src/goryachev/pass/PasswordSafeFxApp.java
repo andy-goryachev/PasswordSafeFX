@@ -1,7 +1,9 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
+import goryachev.common.util.CSystem;
 import goryachev.common.util.GlobalSettings;
 import goryachev.common.util.Log;
+import goryachev.common.util.Parsers;
 import goryachev.fx.CssLoader;
 import java.io.File;
 import javafx.application.Application;
@@ -38,36 +40,17 @@ public class PasswordSafeFxApp
 	
 	public static File getSettingsDir()
 	{
-		// TODO better location?
-		String u = System.getProperty("user.home");
-		return new File(u + "/goryachev.com/PasswordSafeFX/");
-	}
-	
-	
-	public static void createDatabase() throws Exception
-	{
+		String u = CSystem.getUserHome();
+		return new File(u + "/Documents/goryachev.com/PasswordSafeFX/");
 	}
 	
 
 	public void start(Stage s) throws Exception
 	{
-//		IMailData data = loadData();
-//		if(data == null)
-//		{
-//			// TODO new WelcomeWizard().open();
-//			createDatabase();
-//			data = loadData();
-//			if(data == null)
-//			{
-//				throw new Error("unable to create database");
-//			}
-//			
-//			// TODO import all folders from my mail
-//		}
-//
-//		DB.setData(data);
+		// TODO set language from default locale
 		
-		new MainWindow().open();
+		File f = Parsers.parseFile(Options.dataFile.get());
+		new MainWindow(f).open();
 		CssLoader.setStyles(new Styles());
 	}
 }

@@ -8,6 +8,12 @@ import java.util.Set;
 
 public class CSystem
 {
+	public static String getUserHome()
+	{
+		return System.getProperty("user.home");
+	}
+	
+	
 	public static String getUserName()
 	{
 		return System.getProperty("user.name");

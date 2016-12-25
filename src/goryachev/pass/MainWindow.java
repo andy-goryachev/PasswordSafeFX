@@ -1,13 +1,13 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
 import goryachev.fx.CAction;
-import goryachev.fx.CCheckMenuItem;
 import goryachev.fx.CMenu;
 import goryachev.fx.CMenuBar;
 import goryachev.fx.CMenuItem;
 import goryachev.fx.FX;
 import goryachev.fx.FxDump;
 import goryachev.fx.FxWindow;
+import java.io.File;
 
 
 /**
@@ -17,24 +17,23 @@ public class MainWindow
 	extends FxWindow
 {
 	public final CAction composeAction = new CAction(this::compose);
-//	public final MainWindowController control;
+	private File file;
 	
 	
-	public MainWindow()
+	public MainWindow(File f)
 	{
 		super("MainWindow");
+		this.file = f;
 		
-		setTitle(PasswordSafeFxApp.TITLE);
+		setTitle(PasswordSafeFxApp.TITLE + " " + Version.VERSION);
 		setMinSize(400, 300);
 		setSize(1100, 800);
 
-//		control = new MainWindowController();
-		setTop(createMenuBar());
-//		setCenter(control.split);
+//		setTop(createMenuBar());
 		
 		FxDump.attach(this);
 		
-//		control.loadData();
+		showLockPane();
 	}
 	
 	
@@ -78,6 +77,13 @@ public class MainWindow
 		m.separator();
 		m.add("About");
 		return mb;
+	}
+	
+	
+	protected void showLockPane()
+	{
+		LockPane p = new LockPane(file);
+		setCenter(p);
 	}
 	
 	
