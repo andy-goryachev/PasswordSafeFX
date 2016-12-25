@@ -156,6 +156,8 @@ public class Crypto
 				{
 					Arrays.fill(v, '\u0000');
 				}
+				
+				BIGINTEGER_MAG.set(x, null);
 			}
 		}
 		catch(Throwable e)

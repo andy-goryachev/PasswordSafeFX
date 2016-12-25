@@ -2,6 +2,7 @@
 package goryachev.crypto;
 import goryachev.common.test.TF;
 import goryachev.common.test.Test;
+import java.math.BigInteger;
 
 
 public class TestCrypto
@@ -27,5 +28,23 @@ public class TestCrypto
 		Crypto.zero(s);
 		
 		String errorExpected = "" + s;
+	}
+	
+	
+	@Test
+	public void testZeroBigInteger() throws Exception
+	{
+		BigInteger x = new BigInteger("1234567890");
+		Crypto.zero(x);
+	}
+	
+	
+	@Test(expected = NullPointerException.class)
+	public void testZeroBigIntegerReuse() throws Exception
+	{
+		BigInteger x = new BigInteger("1234567890");
+		Crypto.zero(x);
+		
+		String errorExpected = "" + x;
 	}
 }
