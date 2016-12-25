@@ -21,7 +21,9 @@ public final class CField<T>
 	{
 		try
 		{
-			return c.getDeclaredField(name);
+			Field f = c.getDeclaredField(name);
+			f.setAccessible(true);
+			return f;
 		}
 		catch(Throwable e)
 		{
