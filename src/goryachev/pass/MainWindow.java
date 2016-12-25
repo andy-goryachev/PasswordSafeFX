@@ -3,9 +3,7 @@ package goryachev.pass;
 import goryachev.fx.FX;
 import goryachev.fx.FxDump;
 import goryachev.fx.FxWindow;
-import goryachev.fx.HPane;
 import java.io.File;
-import javafx.scene.Node;
 
 
 /**
@@ -15,7 +13,7 @@ public class MainWindow
 	extends FxWindow
 {
 	public final MainController control = new MainController(this);
-	private File file;
+	private File file; // TODO property use OpenFileLogic
 	
 	
 	public MainWindow(File f)
@@ -46,19 +44,23 @@ public class MainWindow
 	}
 	
 	
-	protected void showLockPane()
+	public void showLockPane()
 	{
+		FX.storeSettings(this);
+		
 		LockPane p = new LockPane(control, file);
 		setCenter(p);
 	}
 	
 	
-	protected void showMainPane()
+	public void showMainPane()
 	{
 		MainPane p = new MainPane();
 
 		setTop(new ToolBar(control));
 		setCenter(p);
 		setBottom(new StatusBar());
+		
+		FX.restoreSettings(this);
 	}
 }

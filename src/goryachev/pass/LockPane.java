@@ -89,4 +89,10 @@ public class LockPane
 	{
 		// TODO editable, icon
 	}
+
+
+	public void showError(Throwable e)
+	{
+		// TODO dialog?
+	}
 }
