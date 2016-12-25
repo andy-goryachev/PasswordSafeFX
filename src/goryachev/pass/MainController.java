@@ -1,6 +1,8 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
+import goryachev.crypto.OpaqueChars;
 import goryachev.fx.CAction;
+import java.io.File;
 import javafx.scene.control.TextField;
 
 
@@ -28,5 +30,13 @@ public class MainController
 		win.setTop(null);
 		win.showLockPane();
 		win.setBottom(null);
+	}
+
+
+	public void unlockFile(LockPane p, File f, OpaqueChars pw)
+	{
+		p.setProgress(false);
+		
+		// TODO bg thread
 	}
 }

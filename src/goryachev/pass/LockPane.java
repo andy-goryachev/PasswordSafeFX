@@ -1,5 +1,6 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
+import goryachev.crypto.OpaqueChars;
 import goryachev.crypto.fx.SecretField;
 import goryachev.fx.CAction;
 import goryachev.fx.CButton;
@@ -19,13 +20,16 @@ public class LockPane
 {
 	public final CAction browseAction = new CAction(this::browse);
 	public final CAction openAction = new CAction(this::open);
+	public final MainController control;
 	public final TextField fileField;
 	public final SecretField passwordField;
 	public static final CssStyle PANE = new CssStyle("LockPane_PANE");
 	
 	
-	public LockPane(File f)
+	public LockPane(MainController c, File f)
 	{
+		this.control = c;
+		
 		fileField = new TextField();
 		
 		passwordField = new SecretField();
@@ -74,6 +78,15 @@ public class LockPane
 	
 	public void open()
 	{
-		// TODO
+		File f = null;
+		OpaqueChars pw = null;
+		
+		control.unlockFile(this, f, pw);
+	}
+
+
+	public void setProgress(boolean on)
+	{
+		// TODO editable, icon
 	}
 }

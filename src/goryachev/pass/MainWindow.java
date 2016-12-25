@@ -48,7 +48,7 @@ public class MainWindow
 	
 	protected void showLockPane()
 	{
-		LockPane p = new LockPane(file);
+		LockPane p = new LockPane(control, file);
 		setCenter(p);
 	}
 	

@@ -36,7 +36,6 @@ public class ToolBar
 		p.add(c.searchField);
 		p.fill();
 		p.add(new CButton("Add"));
-		p.add(new CButton("Save"));
 		p.add(new CButton("Lock", c.lockAction));
 		return p;
 	}
