@@ -2,6 +2,7 @@
 package goryachev.pass;
 import goryachev.fx.CPane;
 import goryachev.fx.table.FxTable;
+import goryachev.fx.table.FxTableColumn;
 import javafx.geometry.Orientation;
 import javafx.scene.control.SplitPane;
 
@@ -12,7 +13,7 @@ import javafx.scene.control.SplitPane;
 public class MainPane
 	extends CPane
 {
-	public final FxTable<PassEntry> table;
+	public final FxTable<DataEntry> table;
 	public final CPane detailPane;
 	public final SplitPane split;
 	
@@ -20,6 +21,7 @@ public class MainPane
 	public MainPane()
 	{
 		table = new FxTable<>();
+		table.addColumn(new FxTableColumn<DataEntry>());
 		table.hideHeader();
 		
 		detailPane = new CPane();

@@ -4,6 +4,7 @@ import goryachev.fx.CButton;
 import goryachev.fx.CMenu;
 import goryachev.fx.CMenuBar;
 import goryachev.fx.CMenuItem;
+import goryachev.fx.CssStyle;
 import goryachev.fx.FX;
 import goryachev.fx.HPane;
 import goryachev.fx.VPane;
@@ -16,8 +17,13 @@ import javafx.scene.Node;
 public class ToolBar
 	extends VPane
 {
+	public static final CssStyle PANE = new CssStyle("ToolBar_PANE");
+	
+	
 	public ToolBar(MainController c)
 	{
+		FX.style(this, PANE);
+		
 		add(createMenu(c));
 		add(createButtons(c));
 	}

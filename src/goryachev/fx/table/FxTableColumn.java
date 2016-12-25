@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 
 
 /**
- * FxTableColumn.
+ * FxTable Column.
  */
 public class FxTableColumn<T>
 	extends TableColumn<T,T>
