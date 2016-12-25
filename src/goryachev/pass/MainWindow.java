@@ -17,6 +17,7 @@ public class MainWindow
 	extends FxWindow
 {
 	public final CAction lockAction = new CAction(this::lock);
+	public final MainController control = new MainController(this);
 	private File file;
 	
 	
