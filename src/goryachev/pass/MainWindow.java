@@ -16,7 +16,7 @@ import java.io.File;
 public class MainWindow
 	extends FxWindow
 {
-	public final CAction composeAction = new CAction(this::compose);
+	public final CAction lockAction = new CAction(this::lock);
 	private File file;
 	
 	
@@ -29,11 +29,22 @@ public class MainWindow
 		setMinSize(400, 300);
 		setSize(1100, 800);
 
-//		setTop(createMenuBar());
-		
 		FxDump.attach(this);
 		
-		showLockPane();
+		setFile(f);
+	}
+	
+	
+	public void setFile(File f)
+	{
+		if(f == null)
+		{
+			showMainPane();
+		}
+		else
+		{
+			showLockPane();
+		}
 	}
 	
 	
@@ -45,6 +56,7 @@ public class MainWindow
 		m = mb.addMenu("File");
 		m.add("New Database");
 		m.add("Change Database Passphrase");
+		m.add("Lock", lockAction);
 		m.separator();
 		m.add("Open");
 		m.add("Save");
@@ -87,8 +99,21 @@ public class MainWindow
 	}
 	
 	
-	public void compose()
+	protected void showMainPane()
 	{
-		// TODO
+		MainPane p = new MainPane();
+
+		setTop(createMenuBar());
+		setCenter(p);
+		setBottom(new StatusBar());
+	}
+	
+	
+	public void lock()
+	{
+		// TODO destroy in-memory data
+		setTop(null);
+		showLockPane();
+		setBottom(null);
 	}
 }
