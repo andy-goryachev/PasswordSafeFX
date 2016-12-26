@@ -40,7 +40,7 @@ public class LockPane
 		
 		passwordField = new SecretField();
 		
-		progressField = new Label();
+		progressField = FX.label(Pos.CENTER);
 		
 		CButtonPane bp = new CButtonPane();
 		bp.add(new CButton("On-screen Keyboard", keyboardAction));
@@ -59,16 +59,14 @@ public class LockPane
 		);
 		addRows
 		(
-			0.25,
 			PREF,
 			PREF,
 			PREF,
-			PREF,
-			PREF,
-			FILL
+			FILL,
+			PREF
 		);
 		
-		int r = 1;
+		int r = 0;
 		add(0, r, FX.label("File:", Pos.CENTER_RIGHT));
 		add(1, r, fileField);
 		add(2, r, new CButton("Browse", browseAction));
@@ -78,7 +76,7 @@ public class LockPane
 		r++;
 		add(2, r, new CButton("Unlock", unlockAction));
 		r++;
-		add(2, r, 1, 2, progressField);
+		add(1, r, progressField);
 		r++;
 		add(1, r, bp);
 	}

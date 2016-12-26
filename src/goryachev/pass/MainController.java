@@ -1,8 +1,10 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
+import goryachev.common.util.CMap;
 import goryachev.crypto.OpaqueChars;
 import goryachev.fx.CAction;
 import goryachev.fx.FxThread;
+import goryachev.pass.data2.DataFile2;
 import java.io.File;
 import javafx.scene.control.TextField;
 
@@ -15,6 +17,7 @@ public class MainController
 	public final CAction lockAction = new CAction(this::lock);
 	public final MainWindow win;
 	public final TextField searchField;
+	protected DataFile2 data;
 	
 	
 	public MainController(MainWindow w)
@@ -40,9 +43,13 @@ public class MainController
 
 		new FxThread("unlock")
 		{
+			private DataFile2 df;
+			
 			protected void process() throws Throwable
 			{
-				sleep(10000);
+				sleep(2000);
+				df = new DataFile2();
+				df.addEntry("ebay.com", new CMap<>());
 			}
 			
 			protected void onProcessEnd() 
@@ -52,7 +59,7 @@ public class MainController
 			
 			protected void processSuccess()
 			{
-				handleUnlock();
+				handleUnlock(df);
 			}
 			
 			protected void processError(Throwable e)
@@ -64,14 +71,22 @@ public class MainController
 	}
 	
 	
-	protected void handleUnlock()
+	protected void handleUnlock(DataFile2 df)
 	{
-		win.showMainPane();
+		win.showMainPane(df);
 	}
 	
 	
 	protected void handleError(LockPane p, Throwable e)
 	{
 		p.showError(e);
+	}
+
+
+	public void setDataFile(DataFile2 df)
+	{
+		data = df;
+		
+		win.showMainPane(df);
 	}
 }

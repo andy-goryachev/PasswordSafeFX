@@ -3,6 +3,7 @@ package goryachev.pass;
 import goryachev.fx.FX;
 import goryachev.fx.FxDump;
 import goryachev.fx.FxWindow;
+import goryachev.pass.data2.DataFile2;
 import java.io.File;
 
 
@@ -35,7 +36,7 @@ public class MainWindow
 	{
 		if(f == null)
 		{
-			showMainPane();
+			control.setDataFile(new DataFile2());
 		}
 		else
 		{
@@ -53,9 +54,9 @@ public class MainWindow
 	}
 	
 	
-	public void showMainPane()
+	public void showMainPane(DataFile2 df)
 	{
-		MainPane p = new MainPane();
+		MainPane p = new MainPane(df.entries);
 
 		setTop(new ToolBar(control));
 		setCenter(p);
