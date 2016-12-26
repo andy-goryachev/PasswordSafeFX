@@ -1,6 +1,7 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass.data2;
 import goryachev.common.util.CMap;
+import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
@@ -25,6 +26,12 @@ public class DataEntry
 	public String toString()
 	{
 		return getName();
+	}
+	
+	
+	public Property<String> nameProperty()
+	{
+		return name;
 	}
 	
 	

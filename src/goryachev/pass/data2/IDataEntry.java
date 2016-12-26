@@ -1,5 +1,6 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass.data2;
+import javafx.beans.property.Property;
 
 
 /**
@@ -7,6 +8,9 @@ package goryachev.pass.data2;
  */
 public interface IDataEntry
 {
+	public Property<String> nameProperty();
+	
+	
 	public String getName();
 	
 	

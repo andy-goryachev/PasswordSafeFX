@@ -47,8 +47,10 @@ public class MainController
 			
 			protected void process() throws Throwable
 			{
-				sleep(2000);
+				comfortSleep();
+				
 				df = new DataFile2();
+				df.addEntry("amazon.com", new CMap<>());
 				df.addEntry("ebay.com", new CMap<>());
 			}
 			
