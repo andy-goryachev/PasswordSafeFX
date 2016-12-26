@@ -2,8 +2,7 @@
 package goryachev.fx.icon;
 import goryachev.fx.FxIconBuilder;
 import goryachev.fx.IconBase;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import goryachev.fx.internal.WeakAnimation;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
@@ -41,12 +40,13 @@ public class ProcessingIcon
 		
 		IconBase ic = b.getIcon();
 		
-		Timeline t = new Timeline
-		(
-			new KeyFrame(Duration.millis(25), (ev) -> rotate(ic))
-		);
-		t.setCycleCount(Timeline.INDEFINITE);
-		t.play();
+		new WeakAnimation<IconBase>(ic, Duration.millis(25))
+		{
+			protected void handleFrame(IconBase ic)
+			{
+				rotate(ic);
+			}
+		};
 		
 		return ic;
 	}
