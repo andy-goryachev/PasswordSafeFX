@@ -22,6 +22,7 @@ public class LockPane
 	extends CPane
 {
 	public final CAction browseAction = new CAction(this::browse);
+	public final CAction keyboardAction = new CAction(this::toggleKeyboard);
 	public final CAction newSafeAction = new CAction(this::newSafe);
 	public final CAction unlockAction = new CAction(this::unlock);
 	public final MainController control;
@@ -42,7 +43,7 @@ public class LockPane
 		progressField = new Label();
 		
 		CButtonPane bp = new CButtonPane();
-		bp.add(new CButton("On-screen Keyboard"));
+		bp.add(new CButton("On-screen Keyboard", keyboardAction));
 		bp.add(new CButton("Create New Safe", newSafeAction));
 		
 		// layout
@@ -80,11 +81,6 @@ public class LockPane
 		add(2, r, 1, 2, progressField);
 		r++;
 		add(1, r, bp);
-		
-		// TODO "Create New Data File"
-		// TODO "Help"
-		// TODO keyboard
-		// TODO progress icon
 	}
 	
 	
@@ -118,7 +114,8 @@ public class LockPane
 			browseAction,
 			passwordField,
 			unlockAction,
-			newSafeAction
+			newSafeAction,
+			keyboardAction
 		);
 
 		if(on)
@@ -135,5 +132,11 @@ public class LockPane
 	public void showError(Throwable e)
 	{
 		// TODO dialog?
+	}
+	
+	
+	protected void toggleKeyboard()
+	{
+		// TODO
 	}
 }
