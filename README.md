@@ -1,6 +1,6 @@
-# Passw�rd Safe FX
+# Passwørd Safe FX
 
-Reincarnation of [Passw�rd Safe](https://github.com/andy-goryachev/PasswordSafe) project 
+Reincarnation of [Passwørd Safe](https://github.com/andy-goryachev/PasswordSafe) project 
 implemented with [JavaFX](https://en.wikipedia.org/wiki/JavaFX).
 
 ### License
