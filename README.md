@@ -2,7 +2,7 @@
 
 [JavaFX](https://en.wikipedia.org/wiki/JavaFX) version of my [Passwørd Safe](https://github.com/andy-goryachev/PasswordSafe) password manager.
 
-** WORK IN PROGRESS **
+**WORK IN PROGRESS**
 
 ### License
 
