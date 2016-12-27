@@ -3,8 +3,8 @@ package goryachev.pass;
 import goryachev.fx.CPane;
 import goryachev.fx.table.FxTable;
 import goryachev.fx.table.FxTableColumn;
-import goryachev.pass.data2.DataEntry;
 import goryachev.pass.data2.IDataEntry;
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.scene.control.SplitPane;
@@ -28,7 +28,8 @@ public class MainPane
 		table.hideHeader();
 		table.setResizePolicyConstrained();
 		table.setItems(entries);
-		table.getSelectionModel().selectedItemProperty().addListener((src) -> handleTableSelection());
+		table.setMultipleSelection(true);
+		table.getSelectedItems().addListener((Observable src) -> handleTableSelection());
 		
 		detailPane = new CPane();
 		
@@ -43,14 +44,16 @@ public class MainPane
 	
 	protected void handleTableSelection()
 	{
-		IDataEntry en = table.getSelectedItem();
-		if(en == null)
+		ObservableList<IDataEntry> es = table.getSelectedItems();
+		switch(es.size())
 		{
-			detailPane.setCenter(null);
-		}
-		else
-		{
+		case 1:
+			IDataEntry en = es.get(0);
 			detailPane.setCenter(new DetailPane(en));
+			break;
+		default:
+			detailPane.setCenter(null);
+			break;
 		}
 	}
 }
