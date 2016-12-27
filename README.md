@@ -1,8 +1,7 @@
-# Passwørd Safe FX
+# Passwï¿½rd Safe FX
 
-yet another password manager.  
-
-trust no one.
+Reincarnation of [Passwï¿½rd Safe](https://github.com/andy-goryachev/PasswordSafe) project 
+implemented with [JavaFX](https://en.wikipedia.org/wiki/JavaFX).
 
 ### License
 
