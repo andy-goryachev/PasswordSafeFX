@@ -47,7 +47,7 @@ public class Styles
 			
 			new Selector(ToolBar.FIND_BAR).defines
 			(
-				padding(2)
+				padding(spaces(2, 2, 2, 10))
 			),
 			
 			new Selector(StatusBar.PANE).defines

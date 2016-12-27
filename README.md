@@ -1,7 +1,8 @@
 # Passwørd Safe FX
 
-Reincarnation of [Passwørd Safe](https://github.com/andy-goryachev/PasswordSafe) project 
-implemented with [JavaFX](https://en.wikipedia.org/wiki/JavaFX).
+[JavaFX](https://en.wikipedia.org/wiki/JavaFX) version of my [Passwørd Safe](https://github.com/andy-goryachev/PasswordSafe) password manager.
+
+** WORK IN PROGRESS **
 
 ### License
 

@@ -191,6 +191,26 @@ public class CssTools
 		}
 		return sb.toString();
 	}
+	
+	
+	public static String list(String separator, Object[] items)
+	{
+		SB sb = new SB();
+		boolean sep = false;
+		for(Object x: items)
+		{
+			if(sep)
+			{
+				sb.a(separator);
+			}
+			else
+			{
+				sep = true;
+			}
+			sb.a(toValue(x));
+		}
+		return sb.toString();
+	}
 
 
 	/** constructs selector string */

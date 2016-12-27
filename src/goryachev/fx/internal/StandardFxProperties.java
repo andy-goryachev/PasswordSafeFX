@@ -77,4 +77,7 @@ public class StandardFxProperties
 	
 	
 	public static FxCssProp prop(String name, Object val) { return new FxCssProp(name, val); }
+	
+	public static String commas(Object ... xs) { return CssTools.list(",", xs); }
+	public static String spaces(Object ... xs) { return CssTools.list(" ", xs); }
 }
