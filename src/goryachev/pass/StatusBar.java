@@ -18,6 +18,8 @@ public class StatusBar
 	
 	public StatusBar()
 	{
+		FX.style(this, PANE);
+		
 		fill();
 		add(FX.label(Copyright.COPYRIGHT, Pos.CENTER_RIGHT));
 	}

@@ -62,11 +62,24 @@ public class ToolBar
 		m = mb.addMenu("Edit");
 		m.add("Undo");
 		m.add("Redo");
-		m.separator();
+		// clipboard
+		m = mb.addMenu("Clipboard");
 		m.add("Copy Username to Clipboard");
 		m.add("Copy Password to Clipboard");
+		// TODO insert additional items for each custom field
+		m.separator();
 		m.add("Clear Clipboard");
-		m.add("Delete Entry"); // TODO wrong place
+		// record
+		m = mb.addMenu("Record");
+		m.add("New");
+		m.separator();
+		m.add("Edit");
+		m.add("Duplicate");
+		m.separator();
+		m.add("Insert Custom Field");
+		m.add("Delete Custom Field");
+		m.separator();
+		m.add("Delete");
 		// view
 //		m = mb.addMenu("View");
 //		m.add(new CCheckMenuItem("An Option", Options.showConversationThreads));

@@ -30,7 +30,14 @@ public class Styles
 			),
 			
 			// common fx styles
-			new CommonStyles()
+			new CommonStyles(),
+			
+			// application styles
+			
+			new Selector(StatusBar.PANE).defines
+			(
+				padding(2)
+			)
 		);
 	}
 }

@@ -118,7 +118,7 @@ public class LockPane
 
 		if(on)
 		{
-			progressField.setGraphic(ProcessingIcon.create(30));
+			progressField.setGraphic(ProcessingIcon.create(50));
 		}
 		else
 		{

@@ -8,7 +8,11 @@ import goryachev.fx.internal.StandardFxProperties;
 
 
 /**
- * Css Style Sheet Generator.
+ * FX CSS Style Sheet Generator.
+ * 
+ * The following debugging options are defined by CssLoader:
+ *    -Dcss.refresh=true
+ *    -Dcss.dump=true
  */
 public class FxStyleSheet
 	extends StandardFxProperties

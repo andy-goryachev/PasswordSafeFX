@@ -51,6 +51,6 @@ public class PasswordSafeFxApp
 		
 		File f = Parsers.parseFile(Options.dataFile.get());
 		new MainWindow(f).open();
-		CssLoader.setStyles(new Styles());
+		CssLoader.setStyles(() -> new Styles());
 	}
 }
