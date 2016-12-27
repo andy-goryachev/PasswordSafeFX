@@ -1,6 +1,7 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
 import goryachev.fx.CommonStyles;
+import goryachev.fx.FX;
 import goryachev.fx.FxStyleSheet;
 import javafx.scene.paint.Color;
 
@@ -13,15 +14,22 @@ public class Styles
 {
 	public Styles()
 	{
+		Color textBG = Color.WHITE;
+		Color accent = FX.rgb(0x990099);
+		Color focus = FX.mix(accent, textBG, 0.1);
+		
+		// TODO text fg, selected text fg/bg
+		
 		// TODO themes
 		add
 		(
 			// basic styles
 			new Selector(".root").defines
 			(
-				prop("-fx-accent", Color.RED),
-				prop("-fx-focus-color", Color.RED),
-				prop("-fx-faint-focus-color", Color.RED)
+				prop("-fx-accent", accent),
+				prop("-fx-focus-color", focus),
+				// FIX effect here?
+				prop("-fx-faint-focus-color", FX.mix(focus, textBG, 0.2))
 			),
 			
 			new Selector(".text").defines
@@ -33,6 +41,14 @@ public class Styles
 			new CommonStyles(),
 			
 			// application styles
+			
+			// FIX buttons
+			// FIX square edges of text fields
+			
+			new Selector(ToolBar.FIND_BAR).defines
+			(
+				padding(2)
+			),
 			
 			new Selector(StatusBar.PANE).defines
 			(

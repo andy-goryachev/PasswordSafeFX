@@ -17,6 +17,7 @@ import javafx.scene.Node;
 public class ToolBar
 	extends VPane
 {
+	public static final CssStyle FIND_BAR = new CssStyle("ToolBar_FIND_BAR");
 	public static final CssStyle PANE = new CssStyle("ToolBar_PANE");
 	
 	
@@ -32,6 +33,7 @@ public class ToolBar
 	protected Node createButtons(MainController c)
 	{
 		HPane p = new HPane(10);
+		FX.style(p, FIND_BAR);
 		p.add(FX.label("Find:"));
 		p.add(c.searchField);
 		p.fill();
