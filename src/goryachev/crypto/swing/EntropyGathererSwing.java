@@ -58,35 +58,35 @@ public final class EntropyGathererSwing
 	public final void eventDispatched(AWTEvent ev)
 	{
 		// let's mix in everything we can get our hands on
-		random.addSeedMaterial(jvmRandom.nextLong());
-		random.addSeedMaterial(System.currentTimeMillis());
-		random.addSeedMaterial(ev.getID());
+		addSeedMaterial(jvmRandom.nextLong());
+		addSeedMaterial(System.currentTimeMillis());
+		addSeedMaterial(ev.getID());
 		
 		if(ev.getSource() != null)
 		{
-			random.addSeedMaterial(ev.getSource().hashCode());
+			addSeedMaterial(ev.getSource().hashCode());
 		}
 		
 		if(ev instanceof MouseEvent)
 		{
 			MouseEvent e = (MouseEvent)ev;
-			random.addSeedMaterial(e.getXOnScreen());
-			random.addSeedMaterial(e.getYOnScreen());
-			random.addSeedMaterial(e.getX());
-			random.addSeedMaterial(e.getY());
-			random.addSeedMaterial(e.getModifiersEx());
-			random.addSeedMaterial(e.getClickCount());
+			addSeedMaterial(e.getXOnScreen());
+			addSeedMaterial(e.getYOnScreen());
+			addSeedMaterial(e.getX());
+			addSeedMaterial(e.getY());
+			addSeedMaterial(e.getModifiersEx());
+			addSeedMaterial(e.getClickCount());
 		}
 		else if(ev instanceof KeyEvent)
 		{
 			KeyEvent e = (KeyEvent)ev;
-			random.addSeedMaterial(e.getKeyChar());
-			random.addSeedMaterial(e.getKeyCode());
-			random.addSeedMaterial(e.getModifiersEx());
+			addSeedMaterial(e.getKeyChar());
+			addSeedMaterial(e.getKeyCode());
+			addSeedMaterial(e.getModifiersEx());
 		}
 		
-		random.addSeedMaterial(Runtime.getRuntime().freeMemory());
-		random.addSeedMaterial(System.nanoTime());
+		addSeedMaterial(Runtime.getRuntime().freeMemory());
+		addSeedMaterial(System.nanoTime());
 		
 		tick();
 	}

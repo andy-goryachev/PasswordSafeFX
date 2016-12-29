@@ -1,5 +1,6 @@
 // Copyright © 2012-2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.crypto;
+import goryachev.common.util.CKit;
 import goryachev.common.util.WeakList;
 import java.security.Provider;
 import java.security.SecureRandom;
@@ -17,10 +18,6 @@ import org.bouncycastle.crypto.prng.DigestRandomGenerator;
  * By using both sources the overall quality of the generated random numbers should improve,
  * even assuming a possibility that the JVM implementation is compromised, as in this case:
  * http://www.theregister.co.uk/2013/08/12/android_bug_batters_bitcoin_wallets/
- * <p>
- * This component must be attached to the AWT thread by calling its start() method when the 
- * event dispatch thread is active.  Recommended way is to call EntropyGatherer.start() in
- * every application window constructor.
  */
 public abstract class EntropyGathererBase
 {
@@ -132,6 +129,21 @@ public abstract class EntropyGathererBase
 	public static final void addSeedMaterial(byte[] x)
 	{
 		instance.random.addSeedMaterial(x);
+	}
+	
+	
+	/** Adds entropy to the generator. */
+	public static void addSeedMaterial(double x)
+	{
+		instance.random.addSeedMaterial(Double.doubleToLongBits(x));
+	}
+	
+	
+	/** Adds entropy to the generator. */
+	public static void addSeedMaterial(String s)
+	{
+		byte[] b = s.getBytes(CKit.CHARSET_UTF8);
+		instance.random.addSeedMaterial(b);
 	}
 	
 	
