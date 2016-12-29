@@ -1,6 +1,8 @@
 // Copyright © 2012-2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.crypto.fx;
 import goryachev.crypto.EntropyGathererBase;
+import goryachev.fx.FX;
+import goryachev.fx.FxWindow;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -37,12 +39,18 @@ public final class EntropyGathererFX
 	public synchronized static final void start()
 	{
 		EntropyGathererFX g = new EntropyGathererFX();
-		
-		// TODO register with FxWindow
+		FX.addWindowMonitor((w) -> g.attach(w));
+	}
+	
+	
+	protected void attach(FxWindow w)
+	{
+		w.addEventFilter(MouseEvent.ANY, (ev) -> handleEvent(ev));
+		w.addEventFilter(KeyEvent.ANY, (ev) -> handleEvent(ev));
 	}
 	
 
-	public final void eventDispatched(InputEvent ev)
+	public final void handleEvent(InputEvent ev)
 	{
 		// let's mix in everything we can get our hands on
 		addSeedMaterial(jvmRandom.nextLong());

@@ -4,6 +4,7 @@ import goryachev.common.util.CSystem;
 import goryachev.common.util.GlobalSettings;
 import goryachev.common.util.Log;
 import goryachev.common.util.Parsers;
+import goryachev.crypto.fx.EntropyGathererFX;
 import goryachev.fx.CssLoader;
 import java.io.File;
 import javafx.application.Application;
@@ -48,6 +49,8 @@ public class PasswordSafeFxApp
 	public void start(Stage s) throws Exception
 	{
 		// TODO set language from default locale
+		
+		EntropyGathererFX.start();
 		
 		File f = Parsers.parseFile(Options.dataFile.get());
 		new MainWindow(f).open();
