@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  */
 public class DataFile2
 {
-	public final ObservableList<IDataEntry> entries = FXCollections.observableArrayList();
+	private final ObservableList<IDataEntry> entries = FXCollections.observableArrayList();
 	
 	
 	public DataFile2()
@@ -18,7 +18,13 @@ public class DataFile2
 	}
 	
 	
-	public void addEntry(String name, CMap<String,byte[]> fields)
+	public ObservableList<IDataEntry> getEntries()
+	{
+		return entries;
+	}
+	
+	
+	public void addEntry(String name, CMap<String,Object> fields)
 	{
 		entries.add(new DataEntry(name, fields));
 	}

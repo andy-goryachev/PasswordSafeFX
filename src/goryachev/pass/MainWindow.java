@@ -56,7 +56,7 @@ public class MainWindow
 	
 	public void showMainPane(DataFile2 df)
 	{
-		MainPane p = new MainPane(df.entries);
+		MainPane p = new MainPane(df.getEntries());
 
 		setTop(new ToolBar(control));
 		setCenter(p);

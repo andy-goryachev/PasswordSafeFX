@@ -1,5 +1,6 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass.data2;
+import goryachev.crypto.OpaqueChars;
 import javafx.beans.property.Property;
 
 
@@ -8,11 +9,26 @@ import javafx.beans.property.Property;
  */
 public interface IDataEntry
 {
-	public Property<String> nameProperty();
-	
-	
 	public String getName();
 	
 	
-	public byte[] getField(String id);
+	public Property<String> nameProperty();
+
+
+	public Property<String> userNameProperty();
+	
+	
+	public Property<String> notesProperty();
+
+	
+	public OpaqueChars getPassword();
+	
+	
+	public void setPassword(OpaqueChars pw);
+	
+	
+	public OpaqueChars getCustomField(String id);
+	
+	
+	public void setCustomField(String id, OpaqueChars data);
 }
