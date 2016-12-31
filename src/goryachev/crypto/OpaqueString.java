@@ -6,6 +6,8 @@ import goryachev.common.util.Rex;
 
 /**
  * This class provides an opaque storage for a String.
+ * 
+ * @deprecated String objects leak sensitive information in memory.  Use OpaqueText.
  */
 public final class OpaqueString
 	extends OpaqueMemObject

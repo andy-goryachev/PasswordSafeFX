@@ -1,98 +1,49 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass.data2;
-import goryachev.common.util.CMap;
 import goryachev.crypto.OpaqueChars;
-import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 
 
 /**
- * Data Entry.
+ * Data Entry is an FX property container corresponding to a single database record.
  */
 public final class DataEntry
-	implements IDataEntry
 {
-	private static final String FIELD_NAME = " n";
-	private static final String FIELD_NOTES = " s";
-	private static final String FIELD_PASSWORD = " p";
-	private static final String FIELD_USER_NAME = " u";
+	// leading space identifies special persistence keys
+	public static final String FIELD_NOTES = " s";
+	public static final String FIELD_PASSWORD = " p";
+	public static final String FIELD_TITLE = " t";
+	public static final String FIELD_USER_NAME = " u";
+
+	public final SimpleStringProperty title = new SimpleStringProperty();
+	public final SimpleStringProperty userName = new SimpleStringProperty();
+	public final SimpleObjectProperty<OpaqueChars> password = new SimpleObjectProperty<>();
+	public final SimpleStringProperty notes = new SimpleStringProperty();
+	public final ObservableMap<String,SimpleObjectProperty<Object>> customFields = FXCollections.observableHashMap();
 	
-	private final SimpleStringProperty name = new SimpleStringProperty();
-	private final SimpleStringProperty userName = new SimpleStringProperty();
-	private final SimpleStringProperty notes = new SimpleStringProperty();
-	private final ObservableMap<String,Object> fields = FXCollections.observableHashMap();
 	
-	
-	public DataEntry(String name, CMap<String,Object> fields)
+	public DataEntry()
 	{
-		setName(name);
-		this.fields.putAll(fields);
 	}
 	
 	
 	public String toString()
 	{
-		return getName();
-	}
-	
-	
-	public Property<String> nameProperty()
-	{
-		return name;
+		return getTitle();
 	}
 	
 
-	public Property<String> userNameProperty()
+	public String getTitle()
 	{
-		return userName;
-	}
-	
-	
-	public Property<String> notesProperty()
-	{
-		return notes;
-	}
-
-	
-	public void setName(String s)
-	{
-		name.set(s);
+		return title.get();
 	}
 
 
-	public String getName()
+	public SimpleObjectProperty getCustomField(String id)
 	{
-		return name.get();
-	}
-
-
-	public OpaqueChars getCustomField(String id)
-	{
-		Object v = fields.get(id);
-		if(v instanceof OpaqueChars)
-		{
-			return (OpaqueChars)v;
-		}
-		return null;
-	}
-	
-	
-	public void setCustomField(String id, OpaqueChars data)
-	{
-		fields.put(id, data);
-	}
-
-
-	public OpaqueChars getPassword()
-	{
-		return getCustomField(FIELD_PASSWORD);
-	}
-
-
-	public void setPassword(OpaqueChars pw)
-	{
-		setCustomField(FIELD_PASSWORD, pw);
+		return customFields.get(id);
 	}
 }

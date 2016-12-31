@@ -7,7 +7,7 @@ import goryachev.fx.CPane;
 import goryachev.fx.CssStyle;
 import goryachev.fx.FX;
 import goryachev.fx.FxCtl;
-import goryachev.pass.data2.IDataEntry;
+import goryachev.pass.data2.DataEntry;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -20,32 +20,36 @@ import javafx.scene.control.TextField;
 public class DetailPane
 	extends CPane
 {
-	public static final CssStyle NAME = new CssStyle("DetailPane_NAME");
 	public static final CssStyle NOTES = new CssStyle("DetailPane_NOTES");
 	public static final CssStyle PANE = new CssStyle("DetailPane_PANE");
+	public static final CssStyle TITLE = new CssStyle("DetailPane_TITLE");
 
 	public final CAction copyPasswordAction = new CAction(this::copyPassword);
 	public final CAction copyUsernameAction = new CAction(this::copyUsername);
-	public final Label nameField;
+	public final Label titleField;
 	public final TextField usernameField;
 	public final SecretField passwordField;
 	public final TextArea notesField;
 	
 	
-	public DetailPane(IDataEntry en)
+	public DetailPane(DataEntry en)
 	{
 		FX.style(this, PANE);
 		setPadding(10);
 		
-		nameField = FX.label(FxCtl.BOLD, NAME);
-		nameField.textProperty().bind(en.nameProperty());
+		titleField = FX.label(FxCtl.BOLD, TITLE);
+		titleField.textProperty().bind(en.title);
 		
 		usernameField = new TextField();
+		usernameField.textProperty().bind(en.userName);
 		
 		passwordField = new SecretField();
+		// TODO
+		//passwordField.opaqueTextProperty().bind(en.passwordProperty());
 		
 		// TODO non-editable
 		notesField = new TextArea();
+		notesField.textProperty().bind(en.notes);
 		notesField.setEditable(false);
 		FX.style(notesField, NOTES);
 		
@@ -68,7 +72,7 @@ public class DetailPane
 		);
 		
 		int r = 0;
-		add(0, r, 2, 1, nameField);
+		add(0, r, 2, 1, titleField);
 		r++;
 		add(0, r, FX.label("Username:", Pos.CENTER_RIGHT));
 		add(1, r, usernameField);
