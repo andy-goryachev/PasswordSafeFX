@@ -52,8 +52,8 @@ public class DetailPane
 		
 		// TODO non-editable
 		notesField = new TextArea();
-		notesField.textProperty().bind(en.notes);
-		notesField.setEditable(false);
+		notesField.textProperty().bindBidirectional(en.notes);
+		//notesField.setEditable(false);
 		FX.style(notesField, NOTES);
 		
 		// layout
@@ -77,7 +77,7 @@ public class DetailPane
 		);
 		
 		int r = 0;
-		add(0, r, 2, 1, titleField);
+		add(0, r, 4, 1, titleField);
 		r++;
 		add(0, r, FX.label("Username:", Pos.CENTER_RIGHT));
 		add(1, r, usernameField);

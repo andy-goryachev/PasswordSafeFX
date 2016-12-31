@@ -53,6 +53,14 @@ public class Styles
 			new Selector(StatusBar.PANE).defines
 			(
 				padding(2)
+			),
+			
+			new Selector(DetailPane.TITLE).defines
+			(
+				fontSize("160%"),
+				borderColor(Color.GRAY),
+				borderWidth(0, 0, 1, 0),
+				padding(spaces(0, 0, 2, 0))
 			)
 		);
 	}
