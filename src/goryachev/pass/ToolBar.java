@@ -36,8 +36,8 @@ public class ToolBar
 		FX.style(p, FIND_BAR);
 		p.add(FX.label("Find:"));
 		p.add(c.searchField);
-		p.fill();
 		p.add(new CButton("Add"));
+		p.fill();
 		p.add(new CButton("Lock", c.lockAction));
 		return p;
 	}

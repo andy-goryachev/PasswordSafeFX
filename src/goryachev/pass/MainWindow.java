@@ -36,7 +36,7 @@ public class MainWindow
 	{
 		if(f == null)
 		{
-			control.setDataFile(new DataFile2());
+			control.setDataFile(DataFile2.createEmptyFile());
 		}
 		else
 		{

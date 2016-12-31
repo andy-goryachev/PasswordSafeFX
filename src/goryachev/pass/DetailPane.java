@@ -7,6 +7,7 @@ import goryachev.fx.CPane;
 import goryachev.fx.CssStyle;
 import goryachev.fx.FX;
 import goryachev.fx.FxCtl;
+import goryachev.fx.HPane;
 import goryachev.pass.data2.DataEntry;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -24,6 +25,8 @@ public class DetailPane
 	public static final CssStyle PANE = new CssStyle("DetailPane_PANE");
 	public static final CssStyle TITLE = new CssStyle("DetailPane_TITLE");
 
+	public final CAction addFieldAction = new CAction(this::addField);
+	public final CAction changePasswordAction = new CAction(this::changePassword);
 	public final CAction copyPasswordAction = new CAction(this::copyPassword);
 	public final CAction copyUsernameAction = new CAction(this::copyUsername);
 	public final Label titleField;
@@ -55,16 +58,18 @@ public class DetailPane
 		
 		// layout
 		
-		setGaps(10);
+		setGaps(10, 5);
 		
 		addColumns
 		(
 			PREF,
 			FILL,
+			PREF,
 			PREF
 		);
 		addRows
 		(
+			PREF,
 			PREF,
 			PREF,
 			PREF,
@@ -81,9 +86,24 @@ public class DetailPane
 		add(0, r, FX.label("Password:", Pos.CENTER_RIGHT));
 		add(1, r, passwordField);
 		add(2, r, new CButton("Copy Password", copyPasswordAction));
+		add(3, r, new CButton("Change", changePasswordAction));
+		r++;
+		add(1, r, new HPane(new CButton("+ Add Custom Field", addFieldAction)));
 		r++;
 		add(0, r, FX.label("Notes:", Pos.TOP_RIGHT));
-		add(1, r, 2, 2, notesField);
+		add(1, r, 3, 2, notesField);
+	}
+	
+	
+	protected void addField()
+	{
+		// TODO
+	}
+	
+	
+	protected void changePassword()
+	{
+		// TODO
 	}
 	
 	

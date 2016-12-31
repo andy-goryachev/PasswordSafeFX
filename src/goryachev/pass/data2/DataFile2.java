@@ -55,4 +55,12 @@ public class DataFile2
 		
 		entries.add(en);
 	}
+
+
+	public static DataFile2 createEmptyFile()
+	{
+		DataFile2 f = new DataFile2();
+		f.addEntry("Untitled");
+		return f;
+	}
 }
