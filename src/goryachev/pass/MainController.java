@@ -1,6 +1,5 @@
 // Copyright © 2016 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass;
-import goryachev.common.util.CMap;
 import goryachev.crypto.OpaqueChars;
 import goryachev.fx.CAction;
 import goryachev.fx.FxThread;
@@ -49,9 +48,7 @@ public class MainController
 			{
 				comfortSleep();
 				
-				df = new DataFile2();
-				df.addEntry("amazon.com", new CMap<>());
-				df.addEntry("ebay.com", new CMap<>());
+				df = Demo.createDataFile();
 			}
 			
 			protected void onProcessEnd() 
