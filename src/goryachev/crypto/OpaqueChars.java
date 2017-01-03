@@ -133,4 +133,16 @@ public final class OpaqueChars
 			Crypto.zero(me);
 		}
 	}
+
+
+	public void append(String ch)
+	{
+		// TODO
+	}
+
+
+	public void deleteLastChar()
+	{
+		// TODO
+	}
 }
