@@ -170,6 +170,29 @@ public final class OpaqueChars
 
 	public void deleteLastChar()
 	{
-		// TODO
+		char[] cs = getChars();
+		try
+		{
+			int len = cs.length - 1;
+			if(len >= 0)
+			{
+				// TODO this does not handle surrogate characters
+				char[] rv = new char[len];
+				try
+				{
+					System.arraycopy(cs, 0, rv, 0, len);
+					set(rv);
+				}
+				finally
+				{
+					Crypto.zero(rv);
+				}
+			}
+			
+		}
+		finally
+		{
+			Crypto.zero(cs);
+		}
 	}
 }
