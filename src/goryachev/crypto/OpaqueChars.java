@@ -135,9 +135,36 @@ public final class OpaqueChars
 	}
 
 
-	public void append(String ch)
+	public void append(String s)
 	{
-		// TODO
+		if(s != null)
+		{
+			append(s.toCharArray());
+		}
+	}
+	
+	
+	public void append(char[] add)
+	{
+		char[] cs = getChars();
+		try
+		{
+			char[] rv = new char[cs.length + add.length];
+			try
+			{
+				System.arraycopy(cs, 0, rv, 0, cs.length);
+				System.arraycopy(add, 0, rv, cs.length, add.length);
+				set(rv);
+			}
+			finally
+			{
+				Crypto.zero(rv);
+			}
+		}
+		finally
+		{
+			Crypto.zero(cs);
+		}
 	}
 
 
