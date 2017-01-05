@@ -1,4 +1,4 @@
-// Copyright © 2011-2016 Andy Goryachev <andy@goryachev.com>
+// Copyright © 2011-2017 Andy Goryachev <andy@goryachev.com>
 package goryachev.pass.data;
 import goryachev.common.util.CList;
 import goryachev.crypto.OpaqueChars;

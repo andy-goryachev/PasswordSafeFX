@@ -1,4 +1,4 @@
-// Copyright © 2012-2016 Andy Goryachev <andy@goryachev.com>
+// Copyright © 2012-2017 Andy Goryachev <andy@goryachev.com>
 package goryachev.crypto.fx;
 import goryachev.crypto.EntropyGathererBase;
 import goryachev.fx.FX;
