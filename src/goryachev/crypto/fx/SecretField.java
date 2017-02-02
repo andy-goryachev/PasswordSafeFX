@@ -32,6 +32,12 @@ public final class SecretField
 	}
 	
 	
+	public char[] getPlainText()
+	{
+		return password.getChars();
+	}
+	
+	
 	protected void tick()
 	{
 		String s = getText();
@@ -117,17 +123,19 @@ public final class SecretField
 		{
 		case "\b":
 			// backspace
+			// TODO ctrl-delete to clear
 			password.deleteLastChar();
 			break;
 		case "\u007f":
 			// delete
 			break;
+		// TODO home, end
 		default:
 			password.append(ch);
 			break;
 		}
 		
-		D.print(ch, Hex.toHexString(ch.charAt(0)));
+		D.print(ch, Hex.toHexString(ch.charAt(0)), new String(getPlainText()));
 		
 		ev.consume();
 		
