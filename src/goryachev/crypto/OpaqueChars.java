@@ -82,12 +82,17 @@ public final class OpaqueChars
 	}
 	
 	
+	/** returns a new plaintext char[], or null */
 	public final char[] getChars()
 	{
 		byte[] b = null;
 		try
 		{
 			b = getBytes();
+			if(b == null)
+			{
+				return null;
+			}
 			int sz = b.length/2;
 			
 			char[] cs = new char[sz];
@@ -149,16 +154,23 @@ public final class OpaqueChars
 		char[] cs = getChars();
 		try
 		{
-			char[] rv = new char[cs.length + add.length];
-			try
+			if(cs == null)
 			{
-				System.arraycopy(cs, 0, rv, 0, cs.length);
-				System.arraycopy(add, 0, rv, cs.length, add.length);
-				set(rv);
+				set(add);
 			}
-			finally
+			else
 			{
-				Crypto.zero(rv);
+				char[] rv = new char[cs.length + add.length];
+				try
+				{
+					System.arraycopy(cs, 0, rv, 0, cs.length);
+					System.arraycopy(add, 0, rv, cs.length, add.length);
+					set(rv);
+				}
+				finally
+				{
+					Crypto.zero(rv);
+				}
 			}
 		}
 		finally
@@ -173,22 +185,24 @@ public final class OpaqueChars
 		char[] cs = getChars();
 		try
 		{
-			int len = cs.length - 1;
-			if(len >= 0)
+			if(cs != null)
 			{
-				// TODO this does not handle surrogate characters
-				char[] rv = new char[len];
-				try
+				int len = cs.length - 1;
+				if(len >= 0)
 				{
-					System.arraycopy(cs, 0, rv, 0, len);
-					set(rv);
-				}
-				finally
-				{
-					Crypto.zero(rv);
+					// TODO this does not handle surrogate characters
+					char[] rv = new char[len];
+					try
+					{
+						System.arraycopy(cs, 0, rv, 0, len);
+						set(rv);
+					}
+					finally
+					{
+						Crypto.zero(rv);
+					}
 				}
 			}
-			
 		}
 		finally
 		{
